@@ -29,6 +29,6 @@
 
 ### 1주차 : DP(Dynamic Programming)
 
-| 안병규 | | | | |
+| 안병규 | 강지윤 | | | |
 |:-:|:-:|:-:|:-:|:-:|
-| [문제](https://www.acmicpc.net/problem/14002) | | | | |
+| [문제](https://www.acmicpc.net/problem/14002) | [문제](https://www.acmicpc.net/problem/2616) | | | |
