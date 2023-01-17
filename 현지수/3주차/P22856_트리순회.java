@@ -46,7 +46,7 @@ public class P22856_트리순회 {
         if(tree[node].left != -1 && !tree[tree[node].left].visited){// 왼쪽 자식이 있으면 왼쪽 순회
             cnt += inOrder(tree[node].left);
         }
-        if(tree[node].right != -1 && !tree[tree[node].right].visited){// 오른쪽 자식이 있으면 왼쪽 순회
+        if(tree[node].right != -1 && !tree[tree[node].right].visited){// 오른쪽 자식이 있으면 오른쪽 순회
             cnt += inOrder(tree[node].right);
         }
 

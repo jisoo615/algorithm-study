@@ -20,7 +20,7 @@ public class P11066_파일합치기 {
                 arr[i] = Integer.parseInt(st.nextToken());
                 sum[i+1] = sum[i] + arr[i];// 누적합
             }
-            // A B C DP1477_ExpressWay
+            // A B C D
             //A0 ' ' '
             //B  0 ' '
             //C    0 '
