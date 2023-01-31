@@ -22,7 +22,7 @@ public class P16953_A를B바꾸기 {
         q.add(new Point(B, 0));
         while (!q.isEmpty()){
             Point p = q.poll();
-            if(p.x < A) break;
+            if(p.x < A) continue;
 
             if(p.x==A){
                 cnt = p.y;

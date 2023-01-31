@@ -32,13 +32,13 @@ public class P1700_멀티탭스케줄링 {
         int rest = N;
         for (int i = 0; i < K; i++) {
             int product = order[i];
-            // 이미 사용중일때
+            // 이미 사용중일때(plugged in)
             if(using[product]){
                 record.get(product).poll();
                 continue;
             }
 
-            // 사용중 아닐때
+            // 사용중 아닐때(unplugged)
             // 자리 있을때
             if(rest > 0){
                 record.get(product).poll();
@@ -60,7 +60,7 @@ public class P1700_멀티탭스케줄링 {
                     farest = key;
                 }
             }
-            using[farest] = false;// 뽑을 물건 체크
+            using[farest] = false;// 교체 체크
             using[product] = true;
             record.get(product).poll();
             answer++;
