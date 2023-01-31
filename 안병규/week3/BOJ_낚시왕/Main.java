@@ -1,3 +1,5 @@
+package week3.BOJ_낚시왕;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

@@ -1,4 +1,4 @@
-package 입국심사;
+package week2.Programmers_입국심사;
 
 class Solution {
     public long solution(int n, int[] times) {

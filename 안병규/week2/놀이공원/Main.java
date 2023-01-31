@@ -1,4 +1,4 @@
-package 놀이공원;
+package week2.놀이공원;
 
 import java.io.BufferedReader;
 import java.io.IOException;
