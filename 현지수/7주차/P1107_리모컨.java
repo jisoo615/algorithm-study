@@ -32,8 +32,6 @@ public class P1107_리모컨 {
 
         System.out.println(answer);
     }
-
-
     /**
      * @param x 누른 채널 번호
      * @param target 최종적으로 도달해야 하는 번호
