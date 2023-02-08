@@ -1,3 +1,5 @@
+package week3.BOJ_트리의지름;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
