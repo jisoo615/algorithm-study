@@ -1,4 +1,4 @@
-package 휴게소세우기;
+package week2.휴게소세우기;
 
 import java.io.BufferedReader;
 import java.io.IOException;
