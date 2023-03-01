@@ -49,7 +49,7 @@ public class P12757_전설의JBNU {
                         break;
                     }
                     foundKey = findKey(treeMap.ceilingKey(key), treeMap.floorKey(key), K, key);
-                    if(foundKey >= 0) sb.append(treeMap.get(foundKey));
+                    if(foundKey >= 0) sb.append(treeMap.get(foundKey)).append("\n");
                     else sb.append( foundKey==-2 ? "?": -1 ).append("\n");
                     break;
             }
