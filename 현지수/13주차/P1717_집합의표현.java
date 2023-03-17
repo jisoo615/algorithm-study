@@ -34,7 +34,7 @@ public class P1717_집합의표현 {
 
     static int find(int x){
         if(parents[x]==x) return x;
-        return parents[x] = find(parents[parents[x]]);
+        return parents[x] = find(parents[x]);
         // find 하면서 같은 집합은 같은 루트로 변경해줘야 시간초과 막을수있음
     }
     static void union(int a, int b){// 더 작은 수를 루트로, 루트를 변경해야 속한 전체 집합이 합쳐짐 주의
