@@ -55,7 +55,7 @@ public class P11779_최소비용구하기2 {
 
         while (!pq.isEmpty()){
             Node node = pq.poll();
-            if( distance[node.v] < node.w ) continue;// 현재 노드까지 거리비교도 해서 미리 걸러줘야 시간초과 안남
+            if( distance[node.v] < node.w ) continue;// pq에 들어있는 w와 갱신된 distance를 비교해 미리 걸러줘야 시간초과 안남
             if(node.v == end) break;// 도착점 도달하면 종료
 
             for(Node next : graph[node.v]){
