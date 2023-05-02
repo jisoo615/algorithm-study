@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
-
+// https://www.acmicpc.net/problem/21276
 public class P21276_계보복원가호석 {
     public static ArrayList<ArrayList<Integer>> graph;
     public static HashMap<String, ArrayList> map;
@@ -33,7 +33,7 @@ public class P21276_계보복원가호석 {
         }
 
         int M = Integer.parseInt(br.readLine());
-        // x의 조상인 y : y는 조상 중에 하나 임, 바로 위 아닐 수도 있음
+        // x의 조상인 y : y는 조상 중에 하나 임=바로 위 아닐 수도 있음
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
             int child = findIdx.get( st.nextToken() );
@@ -60,15 +60,17 @@ public class P21276_계보복원가호석 {
             goDown(findIdx.get(name));
         }
 
+        // 알파벳 순서대로 저장해둔 map에서 꺼내기
         List<String> alphaOrder = map.keySet().stream().sorted().collect(Collectors.toList());
         for(String name : alphaOrder){
             sb.append("\n");
+            
             List<String> children = map.get(name);
             children.sort(Comparator.naturalOrder());
+
             sb.append(name+" "+children.size());
-            for(String child : children){
-                sb.append(" "+child);
-            }
+
+            for(String child : children) sb.append(" "+child);
         }
         System.out.println(sb.toString());
     }
@@ -83,6 +85,7 @@ public class P21276_계보복원가호석 {
             for (int i = 0; i < graph.get(ancestor).size(); i++) {
                 int son = graph.get(ancestor).get(i);
                 indegree[son]--;
+                
                 if(indegree[son]==0){// 이어진 간선을 없앨때 진입차수가 0이면 바로 아래 자식
                     q.add(son);
                     map.get( findName.get(ancestor) ).add( findName.get(son) );
