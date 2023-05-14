@@ -19,11 +19,6 @@ public class P2225_합분해 {
             dp[i][0] = 1;// 0을 만들 수 있는 경우는 항상 1
             for (int j = 1; j <= N; j++) {// 만들어야 하는 수
                 dp[i][j] = ( dp[i][j-1] + dp[i-1][j] ) % 1000000000;
-//                long sum = 0;
-//                for (int t = j; t >= 0; t--) {
-//                    sum += dp[i-1][j-t] % 1000000000;
-//                }
-//                dp[i][j] = sum % 1000000000;
             }
         }
         System.out.println(dp[K][N]);
