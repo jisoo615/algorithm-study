@@ -73,8 +73,8 @@ public class P14502 {// bfs
                 Point current = queue.poll();
 
                 for (int j = 0; j < 4; j++) {
-                    int nx = current.x + dx[i];
-                    int ny = current.y + dy[i];
+                    int nx = current.x + dx[j];
+                    int ny = current.y + dy[j];
                     if (nx < 0 || N-1 < nx || ny < 0 || M-1 < ny) continue;
                     if(map[nx][ny]!=0 || visited[nx][ny]) continue;
                     queue.add(new Point(nx, ny));
