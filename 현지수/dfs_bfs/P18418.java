@@ -6,70 +6,70 @@ import java.util.StringTokenizer;
 
 public class P18418 {
     static int N;
-    static int[][] hallway;
-    static ArrayList<Point> blanks = new ArrayList<Point>();
-    static ArrayList<Point> teachers = new ArrayList<Point>();
+    static int[][] map;
     static String answer = "NO";
-
+    static int[] dx = {1, -1, 0, 0};
+    static int[] dy = {0, 0, -1, 1};
+// 선생님 1, 학생 2, 장애물 -1
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
-        hallway = new int[N][N];
+        map = new int[N][N];
         for (int i = 0; i < N; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine(), " ");
             for (int j = 0; j < N; j++) {
                 String str = st.nextToken();
-                if(str.equals("T")){
-                    hallway[i][j] = 1;
-                    teachers.add(new Point(i, j));
-                }
-                else if(str.equals("S")) hallway[i][j] = 2;
-                else blanks.add(new Point(i, j));
+                if(str.equals("T")) map[i][j] = 1;
+                else if(str.equals("S")) map[i][j] = 2;
             }
         }
-        DFS(0, 0);
+        DFS(0, -1, 0);
         System.out.println(answer);
     }
 
-    static public boolean verify(){
-        for (int i = 0; i < teachers.size(); i++) {
-            Point teacher = teachers.get(i);
-
-            for (int j = teacher.y; j >=0; j--) {// 선생님의 4 방향 에서 s를 볼 수 있는가
-                if(hallway[teacher.x][j] == 2) return false;
-            }
-            for (int j = teacher.y; j < N; j++) {
-                if(hallway[teacher.x][j] == 2) return false;
-            }
-            for (int j = teacher.x; j >=0; j--) {
-                if(hallway[j][teacher.y] == 2) return false;
-            }
-            for (int j = teacher.x; j < N; j++) {
-                if(hallway[j][teacher.y] == 2) return false;
+    static public boolean findStudent(int x, int y){
+        for (int i = 0; i < 4; i++) {
+            int nx = x;
+            int ny = y;
+            while(true){
+                nx += dx[i];
+                ny += dy[i];
+                if(nx<0 || nx>=N || ny<0 || ny>=N) break;
+                if(map[nx][ny] == -1) break;
+                if(map[nx][ny] == 2) return true;
             }
         }
-        return true;
+        return false;
     }
 
-    static public void DFS(int startIdx, int depth){// blanks에서 3개 뽑기
+    static public void DFS(int row, int col, int depth){// blanks에서 3개 뽑기
         if(depth==3){
-            if(verify()){
-                answer = "YES";
-                return;
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < N; j++) {
+                    if(map[i][j] == 1){
+                        if(findStudent(i, j)){
+                            return;
+                        }
+                    }
+                }
             }
+            answer = "YES";
+            return;
         }
-        Point newBarrier = blanks.get(startIdx);
-        hallway[newBarrier.x][newBarrier.y] = -1;
-        for (int i = startIdx+1; i < N; i++) {
-            DFS(i, depth+1);
+        // 장애물 -1 배치
+        for (int i = col+1; i < N; i++) {// 같은 행의 다음 열
+            if(map[row][i] != 0) continue;
+            map[row][i] = -1;
+            DFS(row, i, depth+1);
+            map[row][i] = 0;
         }
-        hallway[newBarrier.x][newBarrier.y] = 0;
-    }
-
-    static class Point{
-        int x, y;
-        public Point(int x, int y){
-            this.x = x; this.y = y;
+        for (int i = row+1; i < N; i++) {// 다음 행의 모든 열
+            for (int j = 0; j < N; j++) {
+                if(map[i][j] != 0) continue;
+                map[i][j] = -1;
+                DFS(i, j, depth+1);
+                map[i][j] = 0;
+            }
         }
     }
 
